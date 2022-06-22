@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-public class TokenController {
+public class TokenDataController {
 	
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	@GetMapping("/get/getToken") 
+	@GetMapping("/get/getTokenResponse") 
 	public Object getResponse() {
 	      HttpHeaders headers = new HttpHeaders();
 	      headers.setContentType(MediaType.APPLICATION_JSON);
@@ -31,20 +31,5 @@ public class TokenController {
 		  
 	   }
 	  
-	@GetMapping("/get/getTokenData") 
-	public Object getTokenData() {
-	      HttpHeaders headers = new HttpHeaders();
-	      headers.setContentType(MediaType.APPLICATION_JSON);
-	      HttpEntity <String> requestEntity = new HttpEntity<String>(headers);
-	      
-	      String url = "https://stage.communication-scaffold.oodleslab.com/chat-api/chat/auth/authorize?username=pankaj.raj@oodles.io&password=Dpp@12&deviceId=1";
-	      ResponseEntity<Object> exchange = restTemplate.exchange(url, HttpMethod.GET, requestEntity, Object.class);
-		  System.out.println(exchange); 
-		  System.out.println("exchanged data is"+exchange.getBody().toString());
-		  
-		  return exchange.getBody().toString();
-		  
-	   }
-	  
-	
+
 }
